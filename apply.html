@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Apply to Cisco Community VIT Bhopal — Recruitment 2026–27"/>
+  <title>Apply — Cisco Community VIT Bhopal</title>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── Apply-page specific styles ── */
+    .apply-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+    }
+
+    /* Left sidebar — fixed height, non-scrollable */
+    .apply-sidebar {
+      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+      border-right: 1px solid var(--border-1);
+      padding: 48px 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;   /* ← non-scrollable */
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 16px;
+    }
+    .sidebar-logo img { height: 36px; }
+    .sidebar-logo-name { font-family:'DM Sans',sans-serif; font-weight:800; font-size:0.92rem; color:var(--text-1); display:block; }
+    .sidebar-logo-sub  { font-size:0.6rem; font-weight:600; color:var(--text-3); letter-spacing:0.1em; text-transform:uppercase; }
+
+    .sidebar-title {
+      font-family:'DM Sans',sans-serif;
+      font-size:1.6rem;
+      font-weight:800;
+      color:var(--text-1);
+      line-height:1.2;
+    }
+    .sidebar-desc {
+      font-size:0.83rem;
+      color:var(--text-2);
+      line-height:1.7;
+    }
+
+    /* Steps indicator in sidebar */
+    .step-nav { display:flex; flex-direction:column; gap:0; }
+    .step-nav-item {
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:14px 0;
+      position:relative;
+      cursor:pointer;
+    }
+    .step-nav-item::after {
+      content:'';
+      position:absolute;
+      left:15px; top:44px;
+      width:1px; height:calc(100% - 20px);
+      background:var(--border-1);
+    }
+    .step-nav-item:last-child::after { display:none; }
+
+    .step-nav-dot {
+      width:30px; height:30px;
+      border-radius:50%;
+      border:1px solid var(--border-2);
+      background:var(--bg-2);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+      font-size:0.75rem;
+      font-weight:700;
+      color:var(--text-3);
+      transition:all 0.3s ease;
+      z-index:1;
+    }
+    .step-nav-item.active .step-nav-dot {
+      background:var(--text-1);
+      border-color:var(--text-1);
+      color:var(--bg-0);
+    }
+    .step-nav-item.done .step-nav-dot {
+      background:var(--accent-dim);
+      border-color:rgba(124,106,255,0.4);
+      color:var(--accent);
+    }
+
+    .step-nav-text {}
+    .step-nav-label {
+      font-size:0.7rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      color:var(--text-3);
+      margin-bottom:2px;
+    }
+    .step-nav-item.active .step-nav-label { color:var(--text-1); }
+    .step-nav-item.done  .step-nav-label  { color:var(--accent); }
+    .step-nav-name {
+      font-size:0.88rem;
+      font-weight:600;
+      color:var(--text-3);
+    }
+    .step-nav-item.active .step-nav-name { color:var(--text-1); }
+
+    .sidebar-note {
+      margin-top:auto;
+      padding:14px 16px;
+      background:var(--surface-1);
+      border:1px solid var(--border-1);
+      border-radius:var(--r-md);
+      font-size:0.78rem;
+      color:var(--text-2);
+      line-height:1.65;
+    }
+
+    /* Right content area */
+    .apply-content {
+      background:var(--bg-0);
+      padding: 60px 64px 120px;
+      display:flex;
+      flex-direction:column;
+      height: 100vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .apply-content-inner {
+      max-width: 620px;
+      width:100%;
+      margin: 0 auto;
+    }
+
+    /* Form panels */
+    .form-panel {
+      display:none;
+      flex-direction:column;
+      gap:24px;
+      animation:fadeInForm 0.3s ease both;
+    }
+    .form-panel.active { display:flex; }
+    @keyframes fadeInForm {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    .form-panel-hd { margin-bottom:8px; }
+    .form-panel-title {
+      font-family:'DM Sans',sans-serif;
+      font-size:1.6rem;
+      font-weight:800;
+      color:var(--text-1);
+      margin-bottom:6px;
+    }
+    .form-panel-desc {
+      font-size:0.85rem;
+      color:var(--text-2);
+      line-height:1.7;
+    }
+
+    /* Form elements */
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+    .form-group { display:flex; flex-direction:column; gap:7px; }
+    .form-group label {
+      font-size:0.8rem;
+      font-weight:600;
+      color:var(--text-2);
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+    .req { color:#f87171; }
+
+    .form-input, .form-select, .form-textarea {
+      background:var(--bg-1);
+      border:1px solid var(--border-2);
+      border-radius:var(--r-md);
+      color:var(--text-1);
+      font-size:0.875rem;
+      padding:11px 14px;
+      outline:none;
+      transition:border-color 0.2s, box-shadow 0.2s;
+      width:100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px var(--accent-dim);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color:var(--text-3); }
+    .form-input.error, .form-select.error, .form-textarea.error {
+      border-color:#f87171;
+      box-shadow:0 0 0 3px rgba(248,113,113,0.12);
+    }
+    .form-select {
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      cursor:pointer;
+      background-color:var(--bg-1);
+      border:1px solid var(--border-2);
+      border-radius:var(--r-md);
+      color:var(--text-1);
+      font-family:inherit;
+      font-size:0.875rem;
+      padding:12px 40px 12px 16px;
+      outline:none;
+      transition:all 0.2s ease;
+      width:100%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 14px center;
+      background-size:16px 16px;
+    }
+    .form-select:hover {
+      border-color:var(--border-3);
+      background-color:var(--surface-1);
+    }
+    .form-select:focus {
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px var(--accent-dim);
+    }
+    .form-select option {
+      background:#0f0c24;
+      color:#f4f4f5;
+      padding:12px;
+    }
+    .form-select option:disabled {
+      color:var(--text-3);
+    }
+    .form-textarea { resize:vertical; min-height:100px; line-height:1.65; }
+
+    .form-hint  { font-size:0.72rem; color:var(--text-3); margin-top:-3px; }
+    .form-error { font-size:0.72rem; color:#f87171; margin-top:-3px; display:none; }
+    .form-group.has-error .form-error { display:block; }
+
+    .char-counter { font-size:0.7rem; color:var(--text-3); text-align:right; margin-top:-3px; }
+    .char-counter.warn { color:var(--yellow); }
+    .char-counter.over { color:#f87171; }
+
+    /* Team chip picker */
+    .chip-grid { display:flex; flex-wrap:wrap; gap:8px; }
+    .team-chip {
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 14px;
+      border-radius:var(--r-full);
+      border:1px solid var(--border-2);
+      background:var(--bg-1);
+      font-size:0.8rem;
+      font-weight:600;
+      color:var(--text-2);
+      cursor:pointer;
+      transition:all 0.2s;
+      user-select:none;
+    }
+    .team-chip:hover { border-color:var(--border-3); color:var(--text-1); }
+    .team-chip.selected {
+      background:var(--surface-3);
+      border-color:var(--text-1);
+      color:var(--text-1);
+    }
+    .team-chip-icon { width:16px; height:16px; }
+    .team-chip-icon svg { width:16px; height:16px; stroke:currentColor; stroke-width:1.8; fill:none; }
+
+    /* Radio options */
+    .radio-stack { display:flex; flex-direction:column; gap:8px; }
+    .radio-opt {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      background:var(--bg-1);
+      border:1px solid var(--border-2);
+      border-radius:var(--r-md);
+      cursor:pointer;
+      transition:all 0.2s;
+    }
+    .radio-opt:hover { border-color:var(--border-3); }
+    .radio-opt.selected { border-color:var(--text-1); background:var(--surface-2); }
+    .radio-opt input[type="radio"] { accent-color:var(--text-1); width:16px; height:16px; flex-shrink:0; }
+    .radio-opt-body strong { display:block; font-size:0.88rem; font-weight:600; color:var(--text-1); }
+    .radio-opt-body span   { font-size:0.75rem; color:var(--text-2); }
+
+    /* Info callout */
+    .callout {
+      background:var(--surface-1);
+      border:1px solid var(--border-1);
+      border-radius:var(--r-md);
+      padding:14px 16px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .callout-icon { width:16px; height:16px; flex-shrink:0; margin-top:2px; color:var(--text-3); }
+    .callout-icon svg { width:16px; height:16px; stroke:currentColor; stroke-width:1.8; fill:none; }
+    .callout-text strong { display:block; font-size:0.82rem; font-weight:700; color:var(--text-1); margin-bottom:3px; }
+    .callout-text p { font-size:0.78rem; color:var(--text-2); line-height:1.65; }
+
+    /* Review grid */
+    .review-block { margin-bottom:28px; }
+    .review-block-title {
+      font-size:0.68rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      color:var(--text-3);
+      padding-bottom:10px;
+      border-bottom:1px solid var(--border-1);
+      margin-bottom:12px;
+    }
+    .review-field { display:flex; flex-direction:column; gap:3px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+    .review-field:last-child { border-bottom:none; }
+    .review-field-label { font-size:0.68rem; color:var(--text-3); text-transform:uppercase; letter-spacing:0.08em; }
+    .review-field-value { font-size:0.88rem; color:var(--text-1); font-weight:500; }
+
+    /* Form navigation bar — Spans entire right section (besides sidebar) */
+    .form-nav {
+      position: fixed;
+      bottom: 0;
+      left: 360px;
+      right: 0;
+      background: rgba(10, 8, 20, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-1);
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    /* Success state */
+    .success-state {
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:20px;
+      padding:40px 0;
+    }
+    .success-state.show { display:flex; }
+    .success-icon {
+      width:72px; height:72px;
+      border-radius:50%;
+      background:rgba(74,222,128,0.1);
+      border:1px solid rgba(74,222,128,0.3);
+      display:flex; align-items:center; justify-content:center;
+      animation:pop-in 0.5s cubic-bezier(0.175,0.885,0.32,1.275) both;
+    }
+    .success-icon svg { width:32px; height:32px; stroke:var(--green); stroke-width:2; fill:none; }
+    @keyframes pop-in {
+      from { transform:scale(0); opacity:0; }
+      to   { transform:scale(1); opacity:1; }
+    }
+
+    /* Responsive apply page */
+    @media (max-width:900px) {
+      .apply-page { grid-template-columns:1fr; }
+      .apply-sidebar { position:static; height:auto; padding:24px 20px; }
+      .step-nav { flex-direction:row; overflow-x:auto; gap:0; }
+      .step-nav-item { flex-direction:column; align-items:center; text-align:center; min-width:80px; padding:10px 8px; }
+      .step-nav-item::after { display:none; }
+      .apply-content { padding:32px 20px 100px; height:auto; min-height:100vh; }
+      .form-row { grid-template-columns:1fr; }
+      .form-nav { left:0; padding:14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="apply-page">
+
+  <!-- ─────────────────────────────────────
+       LEFT SIDEBAR
+  ───────────────────────────────────── -->
+  <aside class="apply-sidebar">
+    <a href="index.html" class="sidebar-logo">
+      <img src="logo.png" alt="Cisco Community VIT Bhopal" />
+      <div>
+        <span class="sidebar-logo-name">Cisco Community</span>
+        <span class="sidebar-logo-sub">VIT Bhopal</span>
+      </div>
+    </a>
+
+    <div>
+      <div class="eyebrow eyebrow-accent" style="margin-bottom:12px">Recruitment 2026–27</div>
+      <div class="sidebar-title">Apply to join our community</div>
+    </div>
+
+    <p class="sidebar-desc">
+      Three quick steps. Takes about 5 minutes.
+      We review every application personally.
+    </p>
+
+    <nav class="step-nav" id="step-nav" aria-label="Form steps">
+      <div class="step-nav-item active" data-step="1">
+        <div class="step-nav-dot">1</div>
+        <div class="step-nav-text">
+          <div class="step-nav-label">Step 1</div>
+          <div class="step-nav-name">Personal Details</div>
+        </div>
+      </div>
+      <div class="step-nav-item" data-step="2">
+        <div class="step-nav-dot">2</div>
+        <div class="step-nav-text">
+          <div class="step-nav-label">Step 2</div>
+          <div class="step-nav-name">Motivation & Team</div>
+        </div>
+      </div>
+      <div class="step-nav-item" data-step="3">
+        <div class="step-nav-dot">3</div>
+        <div class="step-nav-text">
+          <div class="step-nav-label">Step 3</div>
+          <div class="step-nav-name">Review & Submit</div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-note">
+      All information is kept confidential and used only for recruitment purposes.
+      Questions? <a href="mailto:cisco.vitbhopal@gmail.com" style="color:var(--accent)">cisco.vitbhopal@gmail.com</a>
+    </div>
+  </aside>
+
+  <!-- ─────────────────────────────────────
+       RIGHT CONTENT
+  ───────────────────────────────────── -->
+  <div class="apply-content">
+    <div class="apply-content-inner" id="apply-inner">
+
+      <!-- ── PANEL 1: Personal Details ── -->
+      <div class="form-panel active" id="panel-1">
+        <div class="form-panel-hd">
+          <div class="form-panel-title">Personal Details</div>
+          <p class="form-panel-desc">
+            Tell us who you are. Fields marked <span class="req">*</span> are required.
+          </p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name <span class="req">*</span></label>
+            <input class="form-input" id="f-fname" type="text" placeholder="Arjun" autocomplete="given-name"/>
+            <span class="form-error">Required</span>
+          </div>
+          <div class="form-group">
+            <label>Last Name <span class="req">*</span></label>
+            <input class="form-input" id="f-lname" type="text" placeholder="Sharma" autocomplete="family-name"/>
+            <span class="form-error">Required</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address <span class="req">*</span></label>
+            <input class="form-input" id="f-email" type="email" placeholder="you@vitbhopal.ac.in" autocomplete="email"/>
+            <span class="form-error">Enter a valid email</span>
+          </div>
+          <div class="form-group">
+            <label>Phone Number <span class="req">*</span></label>
+            <input class="form-input" id="f-phone" type="tel" placeholder="9876543210" autocomplete="tel"/>
+            <span class="form-error">Enter a valid number</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Current Year <span class="req">*</span></label>
+            <select class="form-select" id="f-year">
+              <option value="" disabled selected>Select year</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+            <span class="form-error">Required</span>
+          </div>
+          <div class="form-group">
+            <label>Branch <span class="req">*</span></label>
+            <select class="form-select" id="f-branch">
+              <option value="" disabled selected>Select branch</option>
+              <option>B.Tech CSE</option>
+              <option>B.Tech CSE (AI/ML)</option>
+              <option>B.Tech CSE (Data Science)</option>
+              <option>B.Tech ECE</option>
+              <option>B.Tech EEE</option>
+              <option>B.Tech Mechanical</option>
+              <option>B.Tech Civil</option>
+              <option>MBA</option>
+              <option>Other</option>
+            </select>
+            <span class="form-error">Required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Registration Number <span class="req">*</span></label>
+          <input class="form-input" id="f-regno" type="text" placeholder="22BCE10001"/>
+          <span class="form-error">Required</span>
+        </div>
+
+        <div class="form-group">
+          <label>LinkedIn Profile <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+          <input class="form-input" id="f-linkedin" type="url" placeholder="https://linkedin.com/in/yourname" autocomplete="url"/>
+          <span class="form-hint">Helps us learn more about your background</span>
+        </div>
+
+        <div class="form-nav">
+          <a href="index.html" class="btn btn-ghost btn-sm">← Back to site</a>
+          <button class="btn btn-primary btn-lg" id="next-1">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ── PANEL 2: Motivation & Team ── -->
+      <div class="form-panel" id="panel-2">
+        <div class="form-panel-hd">
+          <div class="form-panel-title">Motivation &amp; Team</div>
+          <p class="form-panel-desc">
+            Help us understand what drives you and where you want to contribute.
+            There are no wrong answers—be authentic.
+          </p>
+        </div>
+
+        <!-- Team preference chips -->
+        <div class="form-group" id="fg-team">
+          <label>Preferred Team(s) <span class="req">*</span>
+            <span style="color:var(--text-3);font-weight:400;margin-left:4px">(select up to 2)</span>
+          </label>
+          <div class="chip-grid" id="team-chips"></div>
+          <span class="form-error" id="team-chips-error">Please select at least one team</span>
+        </div>
+
+        <!-- Why join -->
+        <div class="form-group" id="fg-why">
+          <label>Why do you want to join Cisco Community? <span class="req">*</span></label>
+          <textarea class="form-textarea" id="f-why" rows="4"
+            placeholder="Tell us what excites you, what you hope to learn, and how you see yourself contributing to the community..."
+            maxlength="500"></textarea>
+          <div class="char-counter" id="why-ctr">0 / 500</div>
+          <span class="form-error">Please write at least 50 characters</span>
+        </div>
+
+        <!-- Clarifying question -->
+        <div class="callout">
+          <div class="callout-icon" id="callout-icon"></div>
+          <div class="callout-text">
+            <strong>Clarifying Question</strong>
+            <p>
+              Describe a problem—on campus or in the world—that technology could meaningfully solve.
+              What is it, and how would you approach it? (There is no single right answer; we want to see how you think.)
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group" id="fg-problem">
+          <label>Your Answer <span class="req">*</span></label>
+          <textarea class="form-textarea" id="f-problem" rows="4"
+            placeholder="Describe the problem and outline your approach to solving it..."
+            maxlength="500"></textarea>
+          <div class="char-counter" id="prob-ctr">0 / 500</div>
+          <span class="form-error">Please write at least 30 characters</span>
+        </div>
+
+        <!-- Skills -->
+        <div class="form-group" id="fg-skills">
+          <label>Key Skills You Bring <span class="req">*</span></label>
+          <input class="form-input" id="f-skills" type="text"
+            placeholder="e.g. Python, UI/UX Design, Content Writing, Event Management"/>
+          <span class="form-hint">Separate multiple skills with commas</span>
+          <span class="form-error">Please list at least one skill</span>
+        </div>
+
+        <!-- Prior experience -->
+        <div class="form-group">
+          <label>Prior Experience <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+          <textarea class="form-textarea" id="f-experience" rows="3"
+            placeholder="Clubs, hackathons, internships, or personal projects you've worked on..."></textarea>
+        </div>
+
+        <!-- Availability -->
+        <div class="form-group" id="fg-avail">
+          <label>Weekly Availability <span class="req">*</span></label>
+          <div class="radio-stack">
+            <label class="radio-opt">
+              <input type="radio" name="avail" value="2–4 hrs / week"/>
+              <div class="radio-opt-body">
+                <strong>2–4 hours / week</strong>
+                <span>Light involvement — suits busy academic schedules</span>
+              </div>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="avail" value="4–6 hrs / week"/>
+              <div class="radio-opt-body">
+                <strong>4–6 hours / week</strong>
+                <span>Standard commitment for most teams</span>
+              </div>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="avail" value="6–10 hrs / week"/>
+              <div class="radio-opt-body">
+                <strong>6–10 hours / week</strong>
+                <span>High involvement — suited for leadership track</span>
+              </div>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="avail" value="10+ hrs / week"/>
+              <div class="radio-opt-body">
+                <strong>10+ hours / week</strong>
+                <span>Core / head-level — fully committed</span>
+              </div>
+            </label>
+          </div>
+          <span class="form-error">Please select your availability</span>
+        </div>
+
+        <!-- Referral source -->
+        <div class="form-group">
+          <label>How did you hear about us? <span style="color:var(--text-3);font-weight:400">(optional)</span></label>
+          <select class="form-select" id="f-source">
+            <option value="">Select an option</option>
+            <option>Instagram / Social Media</option>
+            <option>Friend or Senior</option>
+            <option>Campus Notice Board</option>
+            <option>College Fest / Event</option>
+            <option>Faculty / Professor</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn btn-ghost btn-lg" id="prev-2">← Back</button>
+          <button class="btn btn-primary btn-lg" id="next-2">Review →</button>
+        </div>
+      </div>
+
+      <!-- ── PANEL 3: Review & Submit ── -->
+      <div class="form-panel" id="panel-3">
+        <div class="form-panel-hd">
+          <div class="form-panel-title">Review &amp; Submit</div>
+          <p class="form-panel-desc">
+            Please review your information below. You can go back to make changes before submitting.
+          </p>
+        </div>
+
+        <div id="review-output"></div>
+
+        <div class="callout" id="submit-callout">
+          <div class="callout-icon" id="submit-callout-icon"></div>
+          <div class="callout-text">
+            <strong>Ready to submit?</strong>
+            <p id="submit-callout-text">By submitting you confirm all information is accurate. We will contact you at your email with next steps.</p>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn btn-ghost btn-lg" id="prev-3">← Back</button>
+          <button class="btn btn-primary btn-lg" id="submit-btn">Submit Application &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS STATE ── -->
+      <div class="success-state" id="success-state">
+        <div class="success-icon" id="success-icon-wrap"></div>
+        <h2 style="font-family:'DM Sans',sans-serif;font-size:1.8rem;font-weight:800;color:var(--text-1)">
+          Application Submitted
+        </h2>
+        <p style="font-size:0.9rem;color:var(--text-2);line-height:1.75;max-width:400px" id="success-msg"></p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <a href="index.html" class="btn btn-primary">Back to Website</a>
+          <a href="https://www.instagram.com/cisco_vitb/" target="_blank" class="btn btn-ghost">Follow Us</a>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-3)" id="app-id"></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+/* ── Apply-page logic ── */
+
+// Re-use TEAMS_DATA and CONFIG from app.js
+// (app.js is loaded first)
+
+let formData = {};
+let currentStep = 1;
+
+// ── Preselect team from URL param ──
+function getPreselectedTeam() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('team') || '';
+}
+
+// ── Theme ──
+applyTheme(localStorage.getItem('ccvitb-theme') || 'dark');
+
+// ── Render team chips ──
+function renderChips() {
+  const container = document.getElementById('team-chips');
+  const pre = getPreselectedTeam();
+  container.innerHTML = TEAMS_DATA.map(t => `
+    <div class="team-chip ${t.name === pre ? 'selected' : ''}"
+         data-name="${t.name}" data-icon="${t.iconKey}">
+      <div class="team-chip-icon">${icon(t.iconKey)}</div>
+      ${t.name}
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.team-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const sel = container.querySelectorAll('.team-chip.selected');
+      if (chip.classList.contains('selected')) {
+        chip.classList.remove('selected');
+      } else {
+        if (sel.length >= 2) sel[0].classList.remove('selected');
+        chip.classList.add('selected');
+      }
+    });
+  });
+}
+
+// ── Char counter ──
+function bindCounter(inputId, counterId, max) {
+  const el  = document.getElementById(inputId);
+  const ctr = document.getElementById(counterId);
+  if (!el || !ctr) return;
+  const update = () => {
+    const n = el.value.length;
+    ctr.textContent = `${n} / ${max}`;
+    ctr.classList.toggle('warn', n > max * 0.8);
+    ctr.classList.toggle('over', n >= max);
+  };
+  el.addEventListener('input', update);
+  update();
+}
+
+// ── Radio option styling ──
+function bindRadios() {
+  document.querySelectorAll('.radio-opt').forEach(opt => {
+    const inp = opt.querySelector('input[type="radio"]');
+    inp.addEventListener('change', () => {
+      document.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+}
+
+// ── Step indicator ──
+function setStep(n) {
+  currentStep = n;
+  document.querySelectorAll('.step-nav-item').forEach(item => {
+    const s = parseInt(item.dataset.step);
+    item.classList.remove('active', 'done');
+    if (s === n) item.classList.add('active');
+    if (s < n)  item.classList.add('done');
+  });
+  document.querySelectorAll('.form-panel').forEach((p, i) => {
+    p.classList.toggle('active', i + 1 === n);
+  });
+}
+
+// ── Validation ──
+function markField(fieldEl, parentSel, ok) {
+  const parent = fieldEl.closest(parentSel || '.form-group');
+  if (!parent) return;
+  fieldEl.classList.toggle('error', !ok);
+  parent.classList.toggle('has-error', !ok);
+}
+
+function validateStep1() {
+  let ok = true;
+  const fname = document.getElementById('f-fname');
+  const lname = document.getElementById('f-lname');
+  const email = document.getElementById('f-email');
+  const phone = document.getElementById('f-phone');
+  const year  = document.getElementById('f-year');
+  const branch= document.getElementById('f-branch');
+  const regno = document.getElementById('f-regno');
+
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  [
+    [fname,  v => v.length > 0],
+    [lname,  v => v.length > 0],
+    [email,  v => emailRe.test(v)],
+    [phone,  v => v.replace(/\D/g,'').length >= 10],
+    [year,   v => v !== ''],
+    [branch, v => v !== ''],
+    [regno,  v => v.length > 0],
+  ].forEach(([el, check]) => {
+    const valid = check(el.value.trim());
+    markField(el, '.form-group', valid);
+    if (!valid) ok = false;
+  });
+  return ok;
+}
+
+function validateStep2() {
+  let ok = true;
+
+  // Teams
+  const selectedTeams = [...document.querySelectorAll('#team-chips .team-chip.selected')];
+  const teamErr = document.getElementById('team-chips-error');
+  if (selectedTeams.length === 0) {
+    teamErr.style.display = 'block';
+    ok = false;
+  } else {
+    teamErr.style.display = 'none';
+  }
+
+  const why = document.getElementById('f-why');
+  markField(why, '.form-group', why.value.trim().length >= 50);
+  if (why.value.trim().length < 50) ok = false;
+
+  const prob = document.getElementById('f-problem');
+  markField(prob, '.form-group', prob.value.trim().length >= 30);
+  if (prob.value.trim().length < 30) ok = false;
+
+  const skills = document.getElementById('f-skills');
+  markField(skills, '.form-group', skills.value.trim().length > 0);
+  if (!skills.value.trim()) ok = false;
+
+  const avail = document.querySelector('input[name="avail"]:checked');
+  const availGrp = document.getElementById('fg-avail');
+  if (!avail) {
+    availGrp.classList.add('has-error');
+    ok = false;
+  } else {
+    availGrp.classList.remove('has-error');
+  }
+
+  return ok;
+}
+
+// ── Collect form data ──
+function collectStep1() {
+  formData.fname    = document.getElementById('f-fname').value.trim();
+  formData.lname    = document.getElementById('f-lname').value.trim();
+  formData.email    = document.getElementById('f-email').value.trim();
+  formData.phone    = document.getElementById('f-phone').value.trim();
+  formData.year     = document.getElementById('f-year').value;
+  formData.branch   = document.getElementById('f-branch').value;
+  formData.regno    = document.getElementById('f-regno').value.trim();
+  formData.linkedin = document.getElementById('f-linkedin').value.trim();
+}
+
+function collectStep2() {
+  formData.teams       = [...document.querySelectorAll('#team-chips .team-chip.selected')].map(c => c.dataset.name).join(', ');
+  formData.why         = document.getElementById('f-why').value.trim();
+  formData.problem     = document.getElementById('f-problem').value.trim();
+  formData.skills      = document.getElementById('f-skills').value.trim();
+  formData.experience  = document.getElementById('f-experience').value.trim();
+  formData.avail       = (document.querySelector('input[name="avail"]:checked') || {}).value || '';
+  formData.source      = document.getElementById('f-source').value;
+}
+
+// ── Build review panel ──
+function buildReview() {
+  const rows = (pairs) => pairs.map(([label, val]) => val ? `
+    <div class="review-field">
+      <span class="review-field-label">${label}</span>
+      <span class="review-field-value">${val}</span>
+    </div>
+  ` : '').join('');
+
+  document.getElementById('review-output').innerHTML = `
+    <div class="review-block">
+      <div class="review-block-title">Personal Details</div>
+      ${rows([
+        ['Full Name',         `${formData.fname} ${formData.lname}`],
+        ['Email',             formData.email],
+        ['Phone',             formData.phone],
+        ['Year / Branch',     `${formData.year} · ${formData.branch}`],
+        ['Registration No.',  formData.regno],
+        ['LinkedIn',          formData.linkedin],
+      ])}
+    </div>
+    <div class="review-block">
+      <div class="review-block-title">Motivation &amp; Team</div>
+      ${rows([
+        ['Preferred Team(s)',  formData.teams],
+        ['Why Cisco Community?', formData.why],
+        ['Clarifying Answer', formData.problem],
+        ['Skills',            formData.skills],
+        ['Experience',        formData.experience],
+        ['Weekly Availability', formData.avail],
+        ['How You Heard',     formData.source],
+      ])}
+    </div>
+  `;
+
+  document.getElementById('submit-callout-text').textContent =
+    `By submitting you confirm all information is accurate. We will contact you at ${formData.email} with next steps.`;
+}
+
+// ── Submit ──
+function handleSubmit() {
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  setTimeout(() => {
+    // Hide all panels
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('submit-callout').style.display = 'none';
+
+    // Show success
+    const ss = document.getElementById('success-state');
+    const wrap = document.getElementById('success-icon-wrap');
+    wrap.innerHTML = icon('checkCircle');
+    wrap.querySelector('svg').style.cssText = 'width:32px;height:32px;stroke:var(--green);stroke-width:2;fill:none';
+
+    document.getElementById('success-msg').innerHTML =
+      `Thank you, <strong>${formData.fname}</strong>. Your application for <strong>${formData.teams || 'Cisco Community'}</strong>
+       has been received. We will review it carefully and get back to you at
+       <strong>${formData.email}</strong> within 5 working days.`;
+
+    document.getElementById('app-id').textContent =
+      `Application ID: CCVITB-${Date.now().toString(36).toUpperCase()}`;
+
+    ss.classList.add('show');
+
+    // Update sidebar to done
+    document.querySelectorAll('.step-nav-item').forEach(item => item.classList.add('done'));
+
+  }, 2000);
+}
+
+// ── Wire up callout icon (loaded after app.js) ──
+function wireCalloutIcons() {
+  const ci = document.getElementById('callout-icon');
+  if (ci) ci.innerHTML = icon('info');
+  const si = document.getElementById('submit-callout-icon');
+  if (si) si.innerHTML = icon('check');
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  applyTheme(localStorage.getItem('ccvitb-theme') || 'dark');
+  renderChips();
+  bindCounter('f-why',     'why-ctr',  500);
+  bindCounter('f-problem', 'prob-ctr', 500);
+  bindRadios();
+  wireCalloutIcons();
+
+  document.getElementById('next-1').addEventListener('click', () => {
+    if (validateStep1()) { collectStep1(); setStep(2); window.scrollTo(0,0); }
+  });
+
+  document.getElementById('prev-2').addEventListener('click', () => { setStep(1); window.scrollTo(0,0); });
+  document.getElementById('next-2').addEventListener('click', () => {
+    if (validateStep2()) { collectStep2(); buildReview(); setStep(3); window.scrollTo(0,0); }
+  });
+
+  document.getElementById('prev-3').addEventListener('click', () => { setStep(2); window.scrollTo(0,0); });
+  document.getElementById('submit-btn').addEventListener('click', handleSubmit);
+});
+</script>
+</body>
+</html>
