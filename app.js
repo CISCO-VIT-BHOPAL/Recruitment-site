@@ -63,8 +63,8 @@ const CONFIG = {
   email:           'cisco.vitbhopal@gmail.com',
   phone:           '+91 98765 43210',
   address:         'VIT Bhopal University, Kothri Kalan, Sehore, MP " 466114',
-  instagram:       'https://www.instagram.com/cisco_vitb/',
-  linkedin:        'https://www.linkedin.com/company/cisco-community-vitb/',
+  instagram:       'https://www.instagram.com/ciscovitb',
+  linkedin:        'https://www.linkedin.com/company/cisco-vit-bhopal/',
   twitter:         'https://twitter.com/CiscoVITB',
   github:          'https://github.com/cisco-vitbhopal',
   discord:         'https://discord.gg/ciscoVITB',
@@ -88,80 +88,99 @@ const SOCIAL_LINKS = [
 ];
 
 // ============================================================
-// TEAMS DATA " single source of truth
+// TEAMS DATA — single source of truth
 // ============================================================
 const TEAMS_DATA = [
   {
     id:          'technical',
-    name:        'Technical',
+    name:        'Technical Team',
     iconKey:     'network',
     badgeLabel:  'Core Team',
     colorHex:    '#22c55e',    // Pangea green
     openings:    8,
-    shortDesc:   'Build, maintain & innovate " networking labs to cloud.',
-    description: 'The backbone of Cisco Community. We build, maintain, and innovate - from networking labs to full-stack applications and cloud infrastructure.',
+    shortDesc:   'Build, develop and maintain the technical backbone of the community through software, networking and emerging technologies.',
+    focusAreas:  ['Development', 'Networking & Cloud', 'Cybersecurity'],
+    description: 'The engineering backbone of Cisco Community. We build full-stack web applications, architect cloud infrastructure, configure enterprise networking labs, and spearhead cybersecurity initiatives.',
     roles:       ['Full-Stack Developer', 'Network Engineer', 'Cloud & DevOps', 'Cybersecurity Analyst', 'IoT Developer'],
     perks:       ['Cisco NetAcad certifications', 'Hands-on networking labs', 'Industry mentor pairing'],
   },
   {
-    id:          'design',
-    name:        'Design & Creative',
-    iconKey:     'palette',
-    badgeLabel:  'Creative',
-    colorHex:    '#6366f1',    // Pangea indigo
-    openings:    5,
-    shortDesc:   'Shape the identity " brand, UI/UX, motion & materials.',
-    description: 'Shape the visual identity of Cisco Community. From brand guidelines to UI prototypes, motion graphics to event materials - we make things beautiful.',
-    roles:       ['Graphic Designer', 'UI/UX Designer', 'Video Editor', 'Motion Designer', 'Brand Strategist'],
-    perks:       ['Adobe Creative Cloud access', 'Portfolio development', 'National design competitions'],
-  },
-  {
-    id:          'marketing',
-    name:        'Marketing & Outreach',
-    iconKey:     'megaphone',
-    badgeLabel:  'Growth',
-    colorHex:    '#ef4444',    // Pangea red
-    openings:    6,
-    shortDesc:   'Amplify the Cisco voice " campaigns & social media.',
-    description: 'Amplify the Cisco Community voice across campus and beyond. Run campaigns, manage social channels, and build our brand among students and industry.',
-    roles:       ['Social Media Manager', 'Content Strategist', 'PR & Sponsorship', 'Brand Ambassador', 'Community Manager'],
-    perks:       ['Industry marketing tools', 'Sponsorship negotiation experience', 'Campus-wide reach'],
-  },
-  {
-    id:          'events',
-    name:        'Events & Operations',
-    iconKey:     'calendar',
-    badgeLabel:  'Operations',
-    colorHex:    '#8b5cf6',    // Pangea violet
-    openings:    7,
-    shortDesc:   'Turn ideas into experiences " hackathons & workshops.',
-    description: 'We turn ideas into unforgettable experiences. Plan and execute hackathons, workshops, CTFs, guest lectures, and our annual flagship events.',
-    roles:       ['Event Coordinator', 'Logistics Manager', 'Volunteer Lead', 'Sponsorship Liaison', 'A/V & Tech Support'],
-    perks:       ['End-to-end event management', 'Speaker network access', 'Leadership development'],
-  },
-  {
     id:          'research',
-    name:        'Research & Innovation',
+    name:        'Research Team',
     iconKey:     'flask',
     badgeLabel:  'R & I',
     colorHex:    '#06b6d4',    // Pangea cyan
     openings:    4,
-    shortDesc:   'Push boundaries " AI/ML research & open-source.',
-    description: 'Push the boundaries of what is possible. Work on AI/ML projects, publish papers, represent Cisco at national conferences, and contribute to open source.',
+    shortDesc:   'Explore emerging technologies through technical research, experimentation, papers and innovative projects.',
+    focusAreas:  ['AI / ML', 'Technical Research', 'Emerging Technologies'],
+    description: 'Push the boundaries of emerging technologies. Conduct cutting-edge AI/ML research, author research papers for national/international conferences, and build open-source innovations.',
     roles:       ['ML / AI Researcher', 'Data Analyst', 'Research Author', 'Open Source Contributor', 'Technical Writer'],
     perks:       ['Research paper co-authorship', 'Conference travel grants', 'Faculty mentorship'],
   },
   {
-    id:          'finance',
-    name:        'Finance & Strategy',
-    iconKey:     'trendingUp',
-    badgeLabel:  'Strategy',
+    id:          'design',
+    name:        'Design Team',
+    iconKey:     'palette',
+    badgeLabel:  'Creative',
+    colorHex:    '#6366f1',    // Pangea indigo
+    openings:    5,
+    shortDesc:   'Shape the visual identity of the community through thoughtful interfaces, graphics and creative experiences.',
+    focusAreas:  ['UI / UX', 'Graphics & Branding', 'Visual Design'],
+    description: 'Shape the visual identity of Cisco Community. From UI/UX prototypes and brand guidelines to 3D motion graphics, video productions, and event materials — we make things beautiful.',
+    roles:       ['Graphic Designer', 'UI/UX Designer', 'Video Editor', 'Motion Designer', 'Brand Strategist'],
+    perks:       ['Adobe Creative Cloud access', 'Portfolio development', 'Design competitions'],
+  },
+  {
+    id:          'content',
+    name:        'Content Team',
+    iconKey:     'book',
+    badgeLabel:  'Content',
+    colorHex:    '#ec4899',    // Pangea pink
+    openings:    5,
+    shortDesc:   'Turn technical ideas into engaging blogs, social content, scripts and clear community documentation.',
+    focusAreas:  ['Technical Writing', 'Social Content', 'Documentation'],
+    description: 'The voice and narrative engine of Cisco Community. We write compelling technical blogs, document key community milestones, script event walkthroughs, and produce insightful publications.',
+    roles:       ['Technical Writer', 'Copywriter', 'Blog Editor', 'Scriptwriter', 'Documentation Lead'],
+    perks:       ['Published author credits', 'Editorial leadership', 'Storytelling & communication masterclasses'],
+  },
+  {
+    id:          'pr',
+    name:        'PR & Outreach Team',
+    iconKey:     'megaphone',
+    badgeLabel:  'Outreach',
+    colorHex:    '#ef4444',    // Pangea red
+    openings:    6,
+    shortDesc:   'Build meaningful connections with companies, communities and students through partnerships and strategic outreach.',
+    focusAreas:  ['Partnerships', 'Sponsorships', 'Outreach & Communications'],
+    description: 'Amplify the Cisco Community voice across campus and beyond. Run public relations campaigns, build strategic industry sponsorships, manage media channels, and expand our partner network.',
+    roles:       ['PR Specialist', 'Media & Press Manager', 'Outreach Coordinator', 'Sponsorship Lead', 'Community Ambassador'],
+    perks:       ['Industry PR tools', 'Sponsorship negotiation experience', 'Campus-wide reach & networking'],
+  },
+  {
+    id:          'hr',
+    name:        'HR Team',
+    iconKey:     'users',
+    badgeLabel:  'People',
     colorHex:    '#f59e0b',    // Pangea amber
-    openings:    3,
-    shortDesc:   'Drive financial health " budgets & strategic growth.',
-    description: 'Drive the financial health and strategic direction of Cisco Community. Manage budgets, secure sponsorships, and build industry partnerships.',
-    roles:       ['Finance Manager', 'Sponsorship Head', 'Partnership Lead', 'Budget Analyst'],
-    perks:       ['Real-world finance management', 'Corporate partnership experience', 'Strategic planning skills'],
+    openings:    4,
+    shortDesc:   'Build a strong community culture through recruitment, onboarding, coordination and member engagement.',
+    focusAreas:  ['Recruitment', 'Onboarding', 'Member Engagement'],
+    description: 'Nurture talent and cultivate a thriving, inclusive community culture. Manage the recruitment pipeline, facilitate member onboarding, coordinate internal engagement, and track member growth.',
+    roles:       ['Talent Acquisition Lead', 'People Operations Specialist', 'Member Engagement Lead', 'Internal Operations Manager'],
+    perks:       ['People management experience', 'Organizational leadership', 'Direct recruitment leadership'],
+  },
+  {
+    id:          'events',
+    name:        'Event Management Team',
+    iconKey:     'calendar',
+    badgeLabel:  'Operations',
+    colorHex:    '#8b5cf6',    // Pangea violet
+    openings:    7,
+    shortDesc:   'Plan and execute engaging technical events, workshops, hackathons and sessions from concept to completion.',
+    focusAreas:  ['Event Planning', 'Workshops & Hackathons', 'Event Coordination'],
+    description: 'We turn ideas into unforgettable experiences. Plan and execute flagship hackathons, technical bootcamps, CTFs, speaker sessions, and our annual summits from end to end.',
+    roles:       ['Event Coordinator', 'Logistics Manager', 'Volunteer Lead', 'Stage & Tech Director', 'Operations Specialist'],
+    perks:       ['End-to-end event management', 'Speaker network access', 'Leadership development'],
   },
 ];
 
@@ -171,16 +190,16 @@ const TEAMS_DATA = [
 const ABOUT_FEATURES = [
   { iconKey: 'award',  title: 'Official Cisco NetAcad Partner',  desc: 'Access world-class networking courses and globally recognised certifications - CCNA, DevNet, and more.' },
   { iconKey: 'rocket', title: 'Launch Your Career',              desc: 'Alumni placed at Cisco, TCS, Infosys, Google, and 50+ leading companies. Your journey starts here.' },
-  { iconKey: 'users',  title: 'Inclusive Community',             desc: 'A tight-knit family of 200+ members across all branches and years - diverse, driven, and welcoming.' },
+  { iconKey: 'users',  title: 'Inclusive Community',             desc: 'A tight-knit family of 30+ members across all branches and years - diverse, driven, and welcoming.' },
   { iconKey: 'book',   title: 'Research & Innovation Hub',       desc: 'Publish papers, attend national conferences, and work on real-world projects with tangible impact.' },
 ];
 
 const TIMELINE_DATA = [
-  { iconKey: 'clipboard',   title: 'Online Application', desc: 'Fill out our multi-step application form. Share your details, motivation, and aspirations.', date: 'Sept 1 " Sept 30', active: true },
-  { iconKey: 'checkCircle', title: 'Shortlisting',       desc: 'Applications reviewed by our committee. Shortlisted candidates notified within 5 working days.',  date: 'Oct 1 " Oct 7',   active: false },
-  { iconKey: 'target',      title: 'Task Round',         desc: 'A practical assignment tailored to your team. We test real skills, not theoretical knowledge.',     date: 'Oct 8 " Oct 14',  active: false },
-  { iconKey: 'mic',         title: 'Interview',          desc: 'A relaxed conversation with team leads. We want to know you, not just your resume.',                date: 'Oct 15 " Oct 21', active: false },
-  { iconKey: 'gift',        title: 'Onboarding',         desc: 'Welcome aboard! Team introductions, first project assignment, and an onboarding session await.',    date: 'Oct 22+',         active: false },
+  { iconKey: 'clipboard',   title: 'Online Application',     desc: 'Fill out our multi-step application form. Share your details, motivation, and aspirations.',        date: '',                         active: true },
+  { iconKey: 'checkCircle', title: 'Shortlisting — Round 1', desc: 'Applications reviewed by our committee. Shortlisted candidates notified within 5 working days.',  date: '24 August – 12 September', active: false },
+  { iconKey: 'target',      title: 'Task Round',             desc: 'A practical assignment tailored to your team. We test real skills, not theoretical knowledge.',     date: '4 – 12 September',        active: false },
+  { iconKey: 'mic',         title: 'Interview',              desc: 'A relaxed conversation with team leads. We want to know you, not just your resume.',                date: '17 September — ECA Time', active: false },
+  { iconKey: 'gift',        title: 'Onboarding',             desc: 'Welcome aboard! Team introductions, first project assignment, and an onboarding session await.',    date: '',                         active: false },
 ];
 
 const PERKS_DATA = [
@@ -195,12 +214,12 @@ const PERKS_DATA = [
 const FAQ_DATA = [
   { q: 'Who can apply to Cisco Community VIT Bhopal?',      a: 'Any enrolled student of VIT Bhopal University - all years and all branches. Passion and willingness to learn matter far more than prior experience.' },
   { q: 'How many teams can I apply to?',                    a: 'You may indicate up to 2 preferred teams in your application. The recruitment committee considers your skills and preferences when making placements.' },
-  { q: 'What does the recruitment process look like?',      a: 'Three stages: Online Application, Task Round, then Interview. The entire process takes approximately 2-3 weeks from the application deadline.' },
+  { q: 'What does the recruitment process look like?',      a: 'Five stages: Online Application, Shortlisting — Round 1 (24 August – 12 September), Task Round (4 – 12 September), Interview (17 September during ECA Time), and Onboarding.' },
   { q: 'Is there a GPA or branch requirement?',             a: 'No. Cisco Community has no minimum GPA or branch restriction. We actively welcome students from CSE, ECE, Mechanical, MBA, and all other disciplines.' },
   { q: 'How much time is expected per week?',               a: 'Typically 4-8 hours per week depending on your team and current projects. We are always flexible around exam periods.' },
   { q: 'Will I receive a certificate?',                     a: 'Yes. Active members receive official certificates, LinkedIn recommendation letters, and priority access to Cisco NetAcad workshops and certifications.' },
-  { q: 'When do applications close?',                       a: 'The 2026–27 cycle closes 30 September 2026. We recommend applying early - spots are limited and filled on a rolling basis.' },
-  { q: 'I have no technical background. Can I still join?', a: 'Absolutely. Teams like Marketing, Design, Events, and Finance require no technical background. Even the Technical team has entry-level roles with full mentoring support.' },
+  { q: 'When do applications close?',                       a: 'Shortlisting — Round 1 closes 12 September. We recommend applying early - spots are limited and filled on a rolling basis.' },
+  { q: 'I have no technical background. Can I still join?', a: 'Absolutely. Teams like PR & Outreach, Design, Event Management, HR, and Content require no technical background. Even the Technical and Research teams have entry-level roles with full mentoring support.' },
 ];
 
 // ============================================================
@@ -237,23 +256,47 @@ function renderNavbar() {
         <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle theme">
           ${icon(currentTheme === 'dark' ? 'sun' : 'moon')}
         </button>
-        <a href="${CONFIG.applyPage}" class="btn btn-primary btn-sm">Apply Now</a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <a href="${CONFIG.applyPage}" class="btn btn-primary btn-sm nav-cta-btn">Apply Now</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-    <div class="nav-mobile" id="nav-mobile">
-      ${NAV_LINKS.map(l => `<a href="${l.href}">${l.label}</a>`).join('')}
-      <a href="${CONFIG.applyPage}" class="btn btn-primary btn-sm">Apply Now</a>
+    <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        ${NAV_LINKS.map(l => `<a href="${l.href}" class="nav-mob-link">${l.label}</a>`).join('')}
+        <div class="nav-mob-cta">
+          <a href="${CONFIG.applyPage}" class="btn btn-primary btn-md nav-mob-apply-btn">Apply Now &nbsp;&rarr;</a>
+        </div>
+      </div>
     </div>
   `;
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
   document.getElementById('theme-toggle-btn').addEventListener('click', () => applyTheme(currentTheme === 'dark' ? 'light' : 'dark'));
+
   const burger = document.getElementById('hamburger');
   const mob    = document.getElementById('nav-mobile');
-  burger.addEventListener('click', () => mob.classList.toggle('open'));
-  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.remove('open')));
+
+  function toggleMenu(open) {
+    const isOpen = typeof open === 'boolean' ? open : !mob.classList.contains('open');
+    burger.classList.toggle('active', isOpen);
+    burger.setAttribute('aria-expanded', String(isOpen));
+    mob.classList.toggle('open', isOpen);
+    mob.setAttribute('aria-hidden', String(!isOpen));
+    if (isOpen) {
+      document.body.classList.add('nav-open');
+    } else {
+      document.body.classList.remove('nav-open');
+    }
+  }
+
+  burger.addEventListener('click', () => toggleMenu());
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+  document.addEventListener('click', e => {
+    if (mob.classList.contains('open') && !nav.contains(e.target)) {
+      toggleMenu(false);
+    }
+  });
 }
 
 // ============================================================
@@ -300,8 +343,8 @@ function renderHero() {
       </h1>
 
       <p class="body-lg hero-anim-3" style="text-align:center;color:var(--text-2);max-width:480px;margin:0 auto 38px;line-height:1.85">
-        200+ students. 6 teams. Real certifications, real projects,
-        real impact " at VIT Bhopal University.
+        30+ members. 7 teams. Real certifications, real projects,
+        real impact — at VIT Bhopal University.
       </p>
 
       <div class="hero-actions hero-anim-4" style="justify-content:center">
@@ -313,21 +356,21 @@ function renderHero() {
 
       <!-- Stats pill row -->
       <div class="hero-stats-row hero-anim-5">
-        <div class="hsr-item"><strong>200+</strong><span>Members</span></div>
+        <div class="hsr-item"><strong>30+</strong><span>Members</span></div>
         <div class="hsr-sep"></div>
-        <div class="hsr-item"><strong>6</strong><span>Teams</span></div>
+        <div class="hsr-item"><strong>7</strong><span>Teams</span></div>
         <div class="hsr-sep"></div>
-        <div class="hsr-item"><strong>50+</strong><span>Events / yr</span></div>
+        <div class="hsr-item"><strong>2–3</strong><span>Events / Year</span></div>
         <div class="hsr-sep"></div>
         <div class="hsr-item"><strong>3+</strong><span>Years</span></div>
       </div>
     </div>
 
-    <!-- PANGEA ARC CARDS " fan out on scroll -->
+    <!-- PANGEA ARC CARDS — fan out on scroll -->
     <div class="hero-arc" id="hero-arc">
       <div class="hero-arc-label">
         <div class="hsl-line"></div>
-        <span>Our Six Teams " Click to Apply</span>
+        <span>Our Seven Teams — Click to Apply</span>
         <div class="hsl-line"></div>
       </div>
       <div class="hero-arc-track" id="hero-arc-track">
@@ -338,7 +381,7 @@ function renderHero() {
     <div class="hero-fade-bottom"></div>
   `;
 
-  // Card clicks ' modal
+  // Card clicks -> modal
   document.querySelectorAll('.hero-team-card').forEach(card => {
     const idx = parseInt(card.dataset.idx);
     card.addEventListener('click', () => openTeamModal(TEAMS_DATA[idx].id));
@@ -360,8 +403,8 @@ function renderAbout() {
           <div class="about-logo-card">
             <img src="logo.png" alt="Cisco Community VIT Bhopal Logo"/>
             <div class="about-stats" style="width:100%">
-              <div class="about-stat-item"><span class="about-stat-n">200+</span><span class="about-stat-l">Members</span></div>
-              <div class="about-stat-item"><span class="about-stat-n">50+</span><span class="about-stat-l">Events</span></div>
+              <div class="about-stat-item"><span class="about-stat-n">30+</span><span class="about-stat-l">Members</span></div>
+              <div class="about-stat-item"><span class="about-stat-n">2–3</span><span class="about-stat-l">Events / Year</span></div>
               <div class="about-stat-item"><span class="about-stat-n">20+</span><span class="about-stat-l">Partners</span></div>
               <div class="about-stat-item"><span class="about-stat-n">100+</span><span class="about-stat-l">Certs Issued</span></div>
             </div>
@@ -374,7 +417,7 @@ function renderAbout() {
             Cisco Community VIT Bhopal is the official Cisco Networking Academy chapter
             at VIT Bhopal University. Since 2021, we have been empowering students with
             industry-grade skills, certifications, and real-world experience across
-            six specialised teams.
+            seven specialised teams.
           </p>
           <div class="about-features">
             ${ABOUT_FEATURES.map(f => `
@@ -394,7 +437,7 @@ function renderAbout() {
 }
 
 // ============================================================
-// TEAMS " Full-height Pangea portrait cards
+// TEAMS — Full-height Pangea portrait cards
 // ============================================================
 function renderTeams() {
   const el = document.getElementById('teams');
@@ -405,7 +448,7 @@ function renderTeams() {
           <div class="eyebrow">Our Teams</div>
           <h2 class="display-lg" style="margin-bottom:8px">Find your role</h2>
           <p class="body-md text-2" style="max-width:420px">
-            ${TEAMS_DATA.reduce((a,t)=>a+t.openings,0)} open positions across six specialised teams.
+            ${TEAMS_DATA.reduce((a,t)=>a+t.openings,0)} open positions across seven specialised teams.
             Click any card to learn more and apply directly.
           </p>
         </div>
@@ -431,10 +474,9 @@ function renderTeams() {
   });
 }
 
-// "" Monotone text-only team card ""
+// ── Monotone text-only team card ──
 function buildTeamCard(team) {
-  const roles = team.roles.slice(0, 3);
-  const extra = team.roles.length > 3 ? `+${team.roles.length - 3} more` : '';
+  const focusAreas = (team.focusAreas || team.roles.slice(0, 3));
   return `
     <div class="team-card" data-id="${team.id}" tabindex="0" role="button"
          aria-label="View ${team.name} team details">
@@ -452,19 +494,18 @@ function buildTeamCard(team) {
       <div class="tc-body">
         <div class="tc-name">${team.name}</div>
         <p class="tc-short">${team.shortDesc}</p>
+        <div class="tc-focus-label">Focus Areas</div>
         <div class="tc-roles-row">
-          ${roles.map(r => `<span class="tc-role-chip">${r}</span>`).join('')}
-          ${extra ? `<span class="tc-role-chip tc-role-more">${extra}</span>` : ''}
+          ${focusAreas.map(a => `<span class="tc-role-chip">${a}</span>`).join('')}
         </div>
       </div>
 
-      <!-- FOOTER -->
+      <!-- FOOTER: opens modal, does NOT navigate to apply.html -->
       <div class="tc-footer-bar">
-        <a href="${CONFIG.applyPage}?team=${encodeURIComponent(team.name)}"
-           class="tc-apply-btn" onclick="event.stopPropagation()">
-          Apply Now
-          <span class="tc-apply-icon">${icon('arrowRight')}</span>
-        </a>
+        <div class="tc-details-btn">
+          <span>View Details</span>
+          <span class="tc-details-icon">${icon('arrowRight')}</span>
+        </div>
       </div>
 
     </div>
@@ -472,20 +513,53 @@ function buildTeamCard(team) {
 }
 
 function initTeamsCarousel() {
+  const trackWrapper = document.querySelector('.teams-track-wrapper');
   const track = document.getElementById('teams-track');
   const prev  = document.getElementById('teams-prev');
   const next  = document.getElementById('teams-next');
+  if (!track || !prev || !next) return;
+
   let idx = 0;
-  const CARD_W = 305; // 290px card + 15px gap
+
+  function getStep() {
+    const card = track.querySelector('.team-card');
+    if (!card) return 305;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 15;
+    return card.offsetWidth + gap;
+  }
 
   const slide = () => {
-    const max = TEAMS_DATA.length - Math.floor(track.parentElement.offsetWidth / CARD_W);
+    if (window.innerWidth <= 768) {
+      track.style.transform = 'none';
+      return;
+    }
+    const step = getStep();
+    const wrapperW = trackWrapper ? trackWrapper.offsetWidth : track.parentElement.offsetWidth;
+    const visibleCards = Math.max(1, Math.floor(wrapperW / step));
+    const max = Math.max(0, TEAMS_DATA.length - visibleCards);
     idx = Math.max(0, Math.min(idx, max));
-    track.style.transform = `translateX(-${idx * CARD_W}px)`;
+    track.style.transform = `translateX(-${idx * step}px)`;
   };
 
-  next.addEventListener('click', () => { idx++; slide(); });
-  prev.addEventListener('click', () => { idx--; slide(); });
+  next.addEventListener('click', () => {
+    if (window.innerWidth <= 768 && trackWrapper) {
+      trackWrapper.scrollBy({ left: getStep(), behavior: 'smooth' });
+    } else {
+      idx++;
+      slide();
+    }
+  });
+
+  prev.addEventListener('click', () => {
+    if (window.innerWidth <= 768 && trackWrapper) {
+      trackWrapper.scrollBy({ left: -getStep(), behavior: 'smooth' });
+    } else {
+      idx--;
+      slide();
+    }
+  });
+
   window.addEventListener('resize', slide);
 }
 
@@ -499,15 +573,15 @@ function openTeamModal(teamId) {
   const modal = document.getElementById('team-modal');
   modal.querySelector('.modal-box').innerHTML = `
     <div class="modal-hd">
-      <div style="display:flex;align-items:center;gap:14px">
+      <div class="modal-hd-title-group">
         <div class="tc-badge-mono" style="font-size:0.65rem;padding:5px 12px">${team.badgeLabel.toUpperCase()}</div>
-        <div class="heading-md">${team.name}</div>
+        <div class="heading-md modal-team-title">${team.name}</div>
       </div>
-      <button class="modal-close" id="modal-close-btn">${icon('x')}</button>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">${icon('x')}</button>
     </div>
 
     <div class="modal-bd">
-      <p class="body-md text-2" style="margin-bottom:22px;line-height:1.75">${team.description}</p>
+      <p class="body-md text-2" style="margin-bottom:20px;line-height:1.75">${team.description}</p>
 
       <div style="margin-bottom:20px">
         <div class="label text-3" style="margin-bottom:10px">Open Roles</div>
@@ -521,7 +595,7 @@ function openTeamModal(teamId) {
         ${team.perks.map(p => `
           <div style="display:flex;align-items:center;gap:10px;font-size:0.84rem;color:var(--text-2);padding:6px 0;border-bottom:1px solid var(--border-1)">
             <div style="width:16px;height:16px;flex-shrink:0;color:var(--text-2)">${icon('check')}</div>
-            ${p}
+            <span>${p}</span>
           </div>
         `).join('')}
       </div>
@@ -533,18 +607,31 @@ function openTeamModal(teamId) {
     </div>
 
     <div class="modal-ft">
-      <button class="btn btn-ghost btn-sm" id="modal-cancel-btn">Close</button>
+      <button class="btn btn-ghost btn-sm modal-btn-close" id="modal-cancel-btn">Close</button>
       <a href="${CONFIG.applyPage}?team=${encodeURIComponent(team.name)}"
-         class="btn btn-primary btn-sm">
+         class="btn btn-primary btn-sm modal-btn-apply">
         Apply for ${team.name} ${icon('arrowRight')}
       </a>
     </div>
   `;
 
+  const closeModal = () => {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    window.removeEventListener('keydown', onKey);
+  };
+
+  const onKey = (e) => {
+    if (e.key === 'Escape') closeModal();
+  };
+
+  document.body.classList.add('modal-open');
   modal.classList.add('open');
-  document.getElementById('modal-close-btn').addEventListener('click',  () => modal.classList.remove('open'));
-  document.getElementById('modal-cancel-btn').addEventListener('click', () => modal.classList.remove('open'));
-  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+  window.addEventListener('keydown', onKey);
+
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+  document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 }
 
 // ============================================================
@@ -559,7 +646,7 @@ function renderRecruitment() {
           <div class="eyebrow">The Process</div>
           <h2 class="display-lg" style="margin-bottom:8px">How it works</h2>
           <p class="body-md text-2" style="margin-bottom:40px;max-width:380px">
-            A transparent, merit-based process that takes around three weeks from application close.
+            A transparent, merit-based 5-stage recruitment process.
           </p>
           <div class="timeline">
             <div class="timeline-line"></div>
@@ -569,7 +656,7 @@ function renderRecruitment() {
                 <div class="tl-content">
                   <strong>${step.title}</strong>
                   <p>${step.desc}</p>
-                  <div class="tl-date">${step.date}</div>
+                  ${step.date ? `<div class="tl-date">${step.date}</div>` : ''}
                 </div>
               </div>
             `).join('')}
@@ -607,7 +694,7 @@ function renderCTABanner() {
       <div class="cta-banner aos">
         <div>
           <h3>Ready to get started?</h3>
-          <p class="text-2">Applications close 30 September 2026. Spots fill quickly.</p>
+          <p class="text-2">Shortlisting closes 12 September. Spots fill quickly.</p>
         </div>
         <a href="${CONFIG.applyPage}" class="btn-pangea">Apply Now &nbsp;&rarr;</a>
       </div>
@@ -755,7 +842,7 @@ function renderMascot() {
   wrap.className = 'mascot-wrap';
   wrap.id = 'mascot';
   wrap.innerHTML = `
-    <div class="mascot-bubble" id="mascot-bubble">Applications close Sept 30 " don't miss out.</div>
+    <div class="mascot-bubble" id="mascot-bubble">Shortlisting closes 12 September — don't miss out.</div>
     <button class="mascot-btn" id="mascot-btn" aria-label="Quick tips">
       ${icon('help')}
     </button>
@@ -765,11 +852,11 @@ function renderMascot() {
   const btn    = document.getElementById('mascot-btn');
   const bubble = document.getElementById('mascot-bubble');
   const msgs   = [
-    'Applications close Sept 30 " don\'t miss out.',
+    'Shortlisting closes 12 September — don\'t miss out.',
     'No prior experience needed to apply.',
     'You can apply to up to 2 teams.',
     'Questions? Email cisco.vitbhopal@gmail.com',
-    'Join 200+ students shaping the future of tech.',
+    'Join 30+ members shaping the future of tech.',
   ];
   let mi = 0;
 
@@ -818,48 +905,35 @@ function initHeroArc() {
   const cards = Array.from(document.querySelectorAll('.hero-team-card'));
   if (!arcEl || cards.length === 0) return;
 
-  const N   = cards.length;        // 6
-  const MID = (N - 1) / 2;        // 2.5
+  const N   = cards.length;        // 7
+  const MID = (N - 1) / 2;        // 3.0 (Center card at index 3 is Content Team)
 
-  // Valley arc — purely vertical offset, ZERO rotation:
-  //   Technical  [top]                       Finance [top]
-  //        Design    [mid]          Research [mid]
-  //              Marketing [low]  Events [low]
-  //
-  //   Cards are ALL upright (no rotate), just shifted down by:
-  //   yOff = MAX_DROP * (1 - norm^2) * t
-  //
-  //   norm = +-1 (outer, Tech/Finance) -> yOff = 0       (stays high)
-  //   norm = 0   (center, Mktg/Events) -> yOff = MAX_DROP (drops most)
-  //
   const MAX_DROP = 60;   // px: how far center cards drop below outer cards
-  const SPREAD   = 4;    // px: tiny extra horizontal spread (keeps cards close)
+  const SPREAD   = 4;    // px: tiny extra horizontal spread
 
   function easeOut(t) { return 1 - Math.pow(1 - t, 2.2); }
 
-  // scrollY-based trigger (hero is at the top of page):
-  //   scrollY = 0         -> t = 0  -> all cards FLAT (straight row)
-  //   scrollY = vh * 0.35 -> t = 1  -> full valley arc formed
   function getProgress() {
     const raw = window.scrollY / (window.innerHeight * 0.35);
     return Math.max(0, Math.min(1, raw));
   }
 
   function updateArc() {
+    if (window.innerWidth <= 768) {
+      cards.forEach(card => { card.style.transform = 'none'; });
+      return;
+    }
     const t = easeOut(getProgress());
     cards.forEach((card, i) => {
-      const offset = i - MID;       // -2.5 .. +2.5
-      const norm   = offset / MID;  // -1   .. +1
-
-      // Pure vertical drop — NO rotation
+      const offset = i - MID;
+      const norm   = offset / MID;
       const yOff   = MAX_DROP * (1 - norm * norm) * t;
       const xExtra = offset * SPREAD * t;
-
       card.style.transform = `translateX(${xExtra}px) translateY(${yOff}px)`;
     });
   }
 
-  // --- Entrance: cards fade in (no slide), then scroll arc takes over ---
+  // Entrance: cards fade in
   cards.forEach((card, i) => {
     card.style.opacity    = '0';
     card.style.transition = `opacity 0.5s ease ${i * 60}ms`;
@@ -869,7 +943,7 @@ function initHeroArc() {
     cards.forEach(card => { card.style.opacity = '1'; });
     const delay = cards.length * 60 + 500;
     setTimeout(() => {
-      cards.forEach(card => { card.style.transition = 'box-shadow 0.3s ease'; });
+      cards.forEach(card => { card.style.transition = 'box-shadow 0.3s ease, border-color 0.28s ease'; });
       updateArc();
     }, delay);
   }));
