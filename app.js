@@ -318,7 +318,6 @@ function renderHero() {
       </div>
       <div class="htc-footer">
         <div class="htc-name">${t.name}</div>
-        <div class="htc-meta">${t.openings} roles open</div>
       </div>
     </div>
   `).join('');
