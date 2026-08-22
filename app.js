@@ -1,5 +1,5 @@
 /* ============================================================
-   CISCO COMMUNITY VIT BHOPAL " RECRUITMENT WEBSITE
+   CISCO COMMUNITY VIT BHOPAL — RECRUITMENT WEBSITE
    Pangea-Style Design . Team Illustrations . Animated Hero
    ============================================================ */
 
@@ -61,8 +61,8 @@ function icon(name, cls = '') {
 const CONFIG = {
   clubName:        'Cisco Community VIT Bhopal',
   email:           'cisco.vitbhopal@gmail.com',
-  phone:           '+91 95084 02130',
-  address:         'VIT Bhopal University, Kothri Kalan, Sehore, MP " 466114',
+  phone:           '+91 98765 43210',
+  address:         'VIT Bhopal University, Kothri Kalan, Sehore, MP — 466114',
   instagram:       'https://www.instagram.com/ciscovitb',
   linkedin:        'https://www.linkedin.com/company/cisco-vit-bhopal/',
   twitter:         'https://twitter.com/CiscoVITB',
@@ -196,7 +196,7 @@ const ABOUT_FEATURES = [
 
 const TIMELINE_DATA = [
   { iconKey: 'clipboard',   title: 'Online Application',     desc: 'Fill out our multi-step application form. Share your details, motivation, and aspirations.',        date: '',                         active: true },
-  { iconKey: 'checkCircle', title: 'Shortlisting — Round 1', desc: 'Applications reviewed by our committee. Shortlisted candidates notified within 5 working days.',  date: '24 August – 3 September', active: false },
+  { iconKey: 'checkCircle', title: 'Shortlisting — Round 1', desc: 'Applications reviewed by our committee. Shortlisted candidates notified within 5 working days.',  date: '24 August – 12 September', active: false },
   { iconKey: 'target',      title: 'Task Round',             desc: 'A practical assignment tailored to your team. We test real skills, not theoretical knowledge.',     date: '4 – 12 September',        active: false },
   { iconKey: 'mic',         title: 'Interview',              desc: 'A relaxed conversation with team leads. We want to know you, not just your resume.',                date: '17 September — ECA Time', active: false },
   { iconKey: 'gift',        title: 'Onboarding',             desc: 'Welcome aboard! Team introductions, first project assignment, and an onboarding session await.',    date: '',                         active: false },
@@ -214,11 +214,11 @@ const PERKS_DATA = [
 const FAQ_DATA = [
   { q: 'Who can apply to Cisco Community VIT Bhopal?',      a: 'Any enrolled student of VIT Bhopal University - all years and all branches. Passion and willingness to learn matter far more than prior experience.' },
   { q: 'How many teams can I apply to?',                    a: 'You may indicate up to 2 preferred teams in your application. The recruitment committee considers your skills and preferences when making placements.' },
-  { q: 'What does the recruitment process look like?',      a: 'Five stages: Online Application, Shortlisting — Round 1 (24 August – 3 September), Task Round (4 – 12 September), Interview (17 September during ECA Time), and Onboarding.' },
+  { q: 'What does the recruitment process look like?',      a: 'Five stages: Online Application, Shortlisting — Round 1 (24 August – 12 September), Task Round (4 – 12 September), Interview (17 September during ECA Time), and Onboarding.' },
   { q: 'Is there a GPA or branch requirement?',             a: 'No. Cisco Community has no minimum GPA or branch restriction. We actively welcome students from CSE, ECE, Mechanical, MBA, and all other disciplines.' },
   { q: 'How much time is expected per week?',               a: 'Typically 4-8 hours per week depending on your team and current projects. We are always flexible around exam periods.' },
   { q: 'Will I receive a certificate?',                     a: 'Yes. Active members receive official certificates, LinkedIn recommendation letters, and priority access to Cisco NetAcad workshops and certifications.' },
-  { q: 'When do applications close?',                       a: 'Shortlisting — Round 1 closes 3 September. We recommend applying early - spots are limited and filled on a rolling basis.' },
+  { q: 'When do applications close?',                       a: 'Shortlisting — Round 1 closes 12 September. We recommend applying early - spots are limited and filled on a rolling basis.' },
   { q: 'I have no technical background. Can I still join?', a: 'Absolutely. Teams like PR & Outreach, Design, Event Management, HR, and Content require no technical background. Even the Technical and Research teams have entry-level roles with full mentoring support.' },
 ];
 
@@ -300,7 +300,7 @@ function renderNavbar() {
 }
 
 // ============================================================
-// HERO " Centered text + Pangea arc cards strip
+// HERO — Centered text + Pangea arc cards strip
 // ============================================================
 function renderHero() {
   const el = document.getElementById('hero');
@@ -447,7 +447,7 @@ function renderTeams() {
           <div class="eyebrow">Our Teams</div>
           <h2 class="display-lg" style="margin-bottom:8px">Find your role</h2>
           <p class="body-md text-2" style="max-width:420px">
-            ${TEAMS_DATA.reduce((a,t)=>a+t.openings,0)} open positions across seven specialised teams.
+            Seven specialised teams, each shaping a different part of the community.
             Click any card to learn more and apply directly.
           </p>
         </div>
@@ -485,7 +485,6 @@ function buildTeamCard(team) {
         <div class="tc-icon-wrap">${icon(team.iconKey)}</div>
         <div class="tc-header-pills">
           <span class="tc-badge-mono">${team.badgeLabel.toUpperCase()}</span>
-          <span class="tc-open-mono">${team.openings} Open</span>
         </div>
       </div>
 
@@ -600,7 +599,7 @@ function openTeamModal(teamId) {
       </div>
 
       <div style="background:var(--surface-2);border:1px solid var(--border-1);border-radius:var(--r-md);padding:14px 16px;font-size:0.82rem;color:var(--text-2)">
-        <strong style="color:var(--text-1);display:block;margin-bottom:3px">${team.openings} positions available</strong>
+        <strong style="color:var(--text-1);display:block;margin-bottom:3px">Applications open</strong>
         Applications are reviewed holistically. Passion and potential matter more than experience.
       </div>
     </div>
@@ -693,7 +692,7 @@ function renderCTABanner() {
       <div class="cta-banner aos">
         <div>
           <h3>Ready to get started?</h3>
-          <p class="text-2">Shortlisting closes 3 September. Spots fill quickly.</p>
+          <p class="text-2">Shortlisting closes 12 September. Spots fill quickly.</p>
         </div>
         <a href="${CONFIG.applyPage}" class="btn-pangea">Apply Now &nbsp;&rarr;</a>
       </div>
@@ -786,7 +785,7 @@ function renderFooter() {
             </div>
           </div>
           <p class="footer-tagline">
-            Building tomorrow's technology leaders"one connection at a time.
+            Building tomorrow's technology leaders—one connection at a time.
             Official Cisco Networking Academy chapter at VIT Bhopal University.
           </p>
           <div class="footer-socials">
@@ -819,7 +818,7 @@ function renderFooter() {
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy"> ${new Date().getFullYear()} <strong>${CONFIG.clubName}</strong>. All rights reserved.</p>
+        <p class="footer-copy">© ${new Date().getFullYear()} <strong>${CONFIG.clubName}</strong>. All rights reserved.</p>
         <div class="footer-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Use</a>
@@ -841,7 +840,7 @@ function renderMascot() {
   wrap.className = 'mascot-wrap';
   wrap.id = 'mascot';
   wrap.innerHTML = `
-    <div class="mascot-bubble" id="mascot-bubble">Shortlisting closes 3 September — don't miss out.</div>
+    <div class="mascot-bubble" id="mascot-bubble">Shortlisting closes 12 September — don't miss out.</div>
     <button class="mascot-btn" id="mascot-btn" aria-label="Quick tips">
       ${icon('help')}
     </button>
@@ -851,7 +850,7 @@ function renderMascot() {
   const btn    = document.getElementById('mascot-btn');
   const bubble = document.getElementById('mascot-bubble');
   const msgs   = [
-    'Shortlisting closes 3 September — don\'t miss out.',
+    'Shortlisting closes 12 September — don\'t miss out.',
     'No prior experience needed to apply.',
     'You can apply to up to 2 teams.',
     'Questions? Email cisco.vitbhopal@gmail.com',
